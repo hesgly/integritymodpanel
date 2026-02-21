@@ -62,7 +62,7 @@
     overflow-y:auto;
   }
 
-  h1,h2,h3 { font-family:'Montserrat',sans-serif; }
+  h1,h2,h3,h4 { font-family:'Montserrat',sans-serif; }
 
   section {
     margin-bottom:50px;
@@ -127,7 +127,6 @@
     background:#001f4d;
   }
 
-  /* Fade-in animation keyframes */
   @keyframes fadeIn { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
 
   /* Responsive */
@@ -135,6 +134,11 @@
     nav { width:200px; }
     main { padding:20px; }
   }
+
+  /* Shift Section Styles */
+  #shifts div { display:flex; gap:20px; flex-wrap:wrap; margin-top:10px; }
+  #shifts h4 { margin-bottom:10px; }
+  #shifts ul { list-style:none; padding-left:0; }
 </style>
 </head>
 <body>
@@ -180,8 +184,21 @@
   </section>
 
   <section id="shifts">
-    <h3>Shifts</h3>
-    <p>Shift management placeholder (clock in/out, schedule, etc.)</p>
+    <h3>Shift Management</h3>
+    <div>
+      <button id="clockInBtn" onclick="clockIn()">Clock In</button>
+      <button id="clockOutBtn" onclick="clockOut()">Clock Out</button>
+      
+      <div style="flex:1; min-width:250px;">
+        <h4>Current Shift</h4>
+        <p id="currentShift">Not clocked in</p>
+      </div>
+      
+      <div style="flex:1; min-width:250px;">
+        <h4>Past Shifts</h4>
+        <ul id="shiftHistory"></ul>
+      </div>
+    </div>
   </section>
 
   <section id="run-command">
@@ -222,6 +239,38 @@
   function runCommand(){
     const cmd = document.getElementById('commandInput').value;
     document.getElementById('commandResult').innerHTML = `Command "<b>${cmd}</b>" executed (Demo)`;
+  }
+
+  // Shift management
+  let shiftStart = null;
+  const shiftHistory = [];
+
+  function clockIn(){
+    if(shiftStart){
+      alert("Already clocked in!");
+      return;
+    }
+    shiftStart = new Date();
+    document.getElementById('currentShift').innerText = `Clocked in at: ${shiftStart.toLocaleTimeString()}`;
+  }
+
+  function clockOut(){
+    if(!shiftStart){
+      alert("You must clock in first!");
+      return;
+    }
+    const shiftEnd = new Date();
+    const duration = ((shiftEnd - shiftStart)/1000/60).toFixed(1); // minutes
+    const entry = `Shift: ${shiftStart.toLocaleTimeString()} - ${shiftEnd.toLocaleTimeString()} (${duration} mins)`;
+    
+    shiftHistory.push(entry);
+    const ul = document.getElementById('shiftHistory');
+    const li = document.createElement('li');
+    li.innerText = entry;
+    ul.prepend(li); // newest first
+    
+    document.getElementById('currentShift').innerText = "Not clocked in";
+    shiftStart = null;
   }
 </script>
 
