@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrity | ERLC Server</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #000000 0%, #0a0f2c 40%, #001f4d 100%);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 30px;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00c6ff;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 56px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 650px;
+      margin-bottom: 40px;
+      opacity: 0.85;
+    }
+
+    .btn {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      border: none;
+      padding: 14px 40px;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 114, 255, 0.4);
+    }
+
+    .section {
+      padding: 100px 20px;
+      text-align: center;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      font-size: 18px;
+      opacity: 0.8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      opacity: 0.6;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 20px;
+      }
+
+      .hero h2 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Integrity</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#join">Join</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Welcome to Integrity</h2>
+    <p>The next-level ERLC private server experience. Clean systems. Real management. Community first.</p>
+    <a href="#" class="btn">Join Our Discord</a>
+  </section>
+
+  <section class="section" id="about">
+    <h3>About Us</h3>
+    <p>Integrity is a modern ERLC private server focused on professionalism, structure, and community growth. Built different. Built better.</p>
+  </section>
+
+  <section class="section" id="features">
+    <h3>Why Integrity?</h3>
+    <p>Custom systems. Structured staff. Clean role management. A serious server for serious roleplay.</p>
+  </section>
+
+  <section class="section" id="join">
+    <h3>Ready to Join?</h3>
+    <a href="#" class="btn">Apply / Join Now</a>
+  </section>
+
+  <footer>
+    © 2026 Integrity. All rights reserved.
+  </footer>
+
+</body>
+</html>
