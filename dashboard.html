@@ -6,20 +6,135 @@
 <title>Integrity Mod Panel</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  body { margin:0; font-family:'Inter',sans-serif; background:#0a0f2c; color:white; display:flex; height:100vh; }
-  nav { width:250px; background:#0f1a40; padding:20px; display:flex; flex-direction:column; }
-  nav h2 { font-family:'Montserrat',sans-serif; font-weight:900; margin-bottom:30px; font-size:22px; }
-  nav a { color:white; text-decoration:none; margin-bottom:15px; padding:10px; border-radius:6px; transition:0.2s; }
-  nav a:hover { background: linear-gradient(90deg,#00c6ff,#0072ff); color:black; }
-  main { flex:1; padding:40px; overflow-y:auto; }
+  /* Reset */
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family:'Inter',sans-serif;
+    display:flex;
+    min-height:100vh;
+    color:white;
+    background: linear-gradient(135deg,#001f4d,#000814);
+    background-size:400% 400%;
+    animation: gradientPulse 20s ease infinite;
+  }
+
+  @keyframes gradientPulse {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+
+  nav {
+    width:250px;
+    background:#0f1a40;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  nav h2 {
+    font-family:'Montserrat',sans-serif;
+    font-weight:900;
+    font-size:22px;
+    margin-bottom:30px;
+  }
+
+  nav a {
+    color:white;
+    text-decoration:none;
+    margin-bottom:15px;
+    padding:10px;
+    border-radius:6px;
+    transition:0.2s;
+  }
+
+  nav a:hover {
+    background: linear-gradient(90deg,#00c6ff,#0072ff);
+    color:black;
+    box-shadow:0 0 10px #00c6ff;
+  }
+
+  main {
+    flex:1;
+    padding:40px;
+    overflow-y:auto;
+  }
+
   h1,h2,h3 { font-family:'Montserrat',sans-serif; }
-  section { margin-bottom:50px; }
-  input, select, button, textarea { padding:10px; margin:5px 0; border-radius:6px; border:none; font-size:16px; width:100%; }
-  button { background: linear-gradient(90deg,#00c6ff,#0072ff); color:white; font-weight:600; cursor:pointer; transition:0.2s; }
-  button:hover { transform: scale(1.03); box-shadow:0 0 20px #00c6ff; }
-  table { width:100%; border-collapse:collapse; margin-top:15px; }
-  th,td { border:1px solid #00c6ff; padding:8px; text-align:left; }
-  th { background:#001f4d; }
+
+  section {
+    margin-bottom:50px;
+    opacity:0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+  }
+
+  section.visible {
+    opacity:1;
+    transform: translateY(0);
+  }
+
+  /* Inputs, selects, textareas dark theme */
+  input, select, textarea {
+    padding:10px;
+    margin:5px 0;
+    border-radius:6px;
+    border:none;
+    font-size:16px;
+    width:100%;
+    background-color:#0f1a40;
+    color:white;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color:#a0a0a0;
+  }
+
+  /* Buttons */
+  button {
+    background: linear-gradient(90deg,#00c6ff,#0072ff);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.2s;
+    padding:12px;
+    border-radius:6px;
+    margin-top:8px;
+  }
+
+  button:hover {
+    transform: scale(1.03);
+    box-shadow:0 0 20px #00c6ff;
+  }
+
+  /* Tables */
+  table {
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+  }
+
+  th,td {
+    border:1px solid #00c6ff;
+    padding:8px;
+    text-align:left;
+  }
+
+  th {
+    background:#001f4d;
+  }
+
+  /* Fade-in animation keyframes */
+  @keyframes fadeIn { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+
+  /* Responsive */
+  @media (max-width:768px){
+    nav { width:200px; }
+    main { padding:20px; }
+  }
 </style>
 </head>
 <body>
@@ -60,15 +175,13 @@
       <thead>
         <tr><th>Time</th><th>Staff</th><th>Action</th><th>Target</th><th>Reason</th></tr>
       </thead>
-      <tbody id="logsTable">
-        <!-- Sample logs will appear here -->
-      </tbody>
+      <tbody id="logsTable"></tbody>
     </table>
   </section>
 
   <section id="shifts">
     <h3>Shifts</h3>
-    <p>Placeholder for shift management (clock in/out, schedule, etc.)</p>
+    <p>Shift management placeholder (clock in/out, schedule, etc.)</p>
   </section>
 
   <section id="run-command">
@@ -80,11 +193,19 @@
 </main>
 
 <script>
-  // Placeholder JS for demo purposes
+  // Fade-in sections on scroll
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, {threshold:0.2});
+  sections.forEach(section => observer.observe(section));
 
+  // Placeholder JS for demo
   function searchPlayer(){
     const input = document.getElementById('playerInput').value;
-    document.getElementById('playerResult').innerHTML = "Searched for player: <b>"+input+"</b> (Demo Result)";
+    document.getElementById('playerResult').innerHTML = "Searched player: <b>"+input+"</b> (Demo)";
   }
 
   function executeModeration(){
@@ -92,8 +213,7 @@
     const player = document.getElementById('modPlayerId').value;
     const reason = document.getElementById('modReason').value;
     document.getElementById('modResult').innerHTML = `Action: <b>${action}</b> executed on <b>${player}</b>. Reason: ${reason || 'N/A'} (Demo)`;
-    
-    // Add sample log
+
     const logs = document.getElementById('logsTable');
     const row = logs.insertRow(0);
     row.innerHTML = `<td>${new Date().toLocaleString()}</td><td>StaffUser</td><td>${action}</td><td>${player}</td><td>${reason || 'N/A'}</td>`;
@@ -101,7 +221,7 @@
 
   function runCommand(){
     const cmd = document.getElementById('commandInput').value;
-    document.getElementById('commandResult').innerHTML = `Command "<b>${cmd}</b>" executed (Demo).`;
+    document.getElementById('commandResult').innerHTML = `Command "<b>${cmd}</b>" executed (Demo)`;
   }
 </script>
 
