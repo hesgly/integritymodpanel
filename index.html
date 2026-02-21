@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Integrity | ERLC Server</title>
+  <title>Integrity | NYCRP</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -14,25 +13,24 @@
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #000000 0%, #0a0f2c 40%, #001f4d 100%);
+      background: radial-gradient(circle at top left, #001f4d, #000814 60%);
       color: white;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
     header {
+      position: fixed;
+      width: 100%;
+      padding: 20px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 60px;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(10px);
-      position: fixed;
-      width: 100%;
-      top: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(12px);
       z-index: 1000;
     }
 
@@ -46,9 +44,9 @@
     }
 
     nav a {
-      color: white;
-      text-decoration: none;
       margin-left: 30px;
+      text-decoration: none;
+      color: white;
       font-weight: 500;
       transition: 0.3s ease;
     }
@@ -58,18 +56,19 @@
     }
 
     .hero {
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       text-align: center;
       padding: 0 20px;
+      animation: fadeIn 1.2s ease forwards;
     }
 
     .hero h2 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 56px;
+      font-size: 64px;
       font-weight: 900;
       margin-bottom: 20px;
       background: linear-gradient(90deg, #00c6ff, #0072ff);
@@ -86,27 +85,34 @@
 
     .btn {
       background: linear-gradient(90deg, #00c6ff, #0072ff);
-      border: none;
-      padding: 14px 40px;
-      border-radius: 8px;
+      padding: 16px 50px;
+      border-radius: 10px;
+      text-decoration: none;
       color: white;
       font-weight: 600;
-      font-size: 16px;
-      cursor: pointer;
+      font-size: 18px;
       transition: 0.3s ease;
-      text-decoration: none;
+      box-shadow: 0 0 25px rgba(0,114,255,0.4);
     }
 
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0, 114, 255, 0.4);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 0 45px rgba(0,114,255,0.7);
     }
 
     .section {
-      padding: 100px 20px;
-      text-align: center;
+      padding: 120px 20px;
       max-width: 1000px;
       margin: auto;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .section h3 {
@@ -123,21 +129,18 @@
     footer {
       text-align: center;
       padding: 40px 20px;
-      opacity: 0.6;
+      opacity: 0.5;
       font-size: 14px;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 768px) {
-      header {
-        padding: 20px;
-      }
-
       .hero h2 {
-        font-size: 36px;
-      }
-
-      .hero p {
-        font-size: 16px;
+        font-size: 40px;
       }
     }
   </style>
@@ -148,35 +151,44 @@
     <h1>Integrity</h1>
     <nav>
       <a href="#about">About</a>
-      <a href="#features">Features</a>
-      <a href="#join">Join</a>
+      <a href="#why">Why Us</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>Welcome to Integrity</h2>
-    <p>The next-level ERLC private server experience. Clean systems. Real management. Community first.</p>
-    <a href="#" class="btn">Join Our Discord</a>
+    <h2>Integrity</h2>
+    <p>The next-level ERLC experience for serious roleplay. Structure. Systems. Community.</p>
+    <a href="https://discord.gg/nycrrp" target="_blank" class="btn">
+      Join NYCRP
+    </a>
   </section>
 
   <section class="section" id="about">
-    <h3>About Us</h3>
-    <p>Integrity is a modern ERLC private server focused on professionalism, structure, and community growth. Built different. Built better.</p>
+    <h3>About NYCRP</h3>
+    <p>NYCRP is a professionally managed ERLC private server focused on realism, leadership, and community growth.</p>
   </section>
 
-  <section class="section" id="features">
+  <section class="section" id="why">
     <h3>Why Integrity?</h3>
-    <p>Custom systems. Structured staff. Clean role management. A serious server for serious roleplay.</p>
-  </section>
-
-  <section class="section" id="join">
-    <h3>Ready to Join?</h3>
-    <a href="#" class="btn">Apply / Join Now</a>
+    <p>We’re building structured systems, clean management, and a serious RP environment. No chaos. No nonsense. Just quality.</p>
   </section>
 
   <footer>
-    © 2026 Integrity. All rights reserved.
+    © 2026 Integrity | NYCRP
   </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
 
 </body>
 </html>
