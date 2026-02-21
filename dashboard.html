@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integrity Mod Panel</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; font-family:'Inter',sans-serif; background:#0a0f2c; color:white; display:flex; height:100vh; }
+  nav { width:250px; background:#0f1a40; padding:20px; display:flex; flex-direction:column; }
+  nav h2 { font-family:'Montserrat',sans-serif; font-weight:900; margin-bottom:30px; font-size:22px; }
+  nav a { color:white; text-decoration:none; margin-bottom:15px; padding:10px; border-radius:6px; transition:0.2s; }
+  nav a:hover { background: linear-gradient(90deg,#00c6ff,#0072ff); color:black; }
+  main { flex:1; padding:40px; overflow-y:auto; }
+  h1,h2,h3 { font-family:'Montserrat',sans-serif; }
+  section { margin-bottom:50px; }
+  input, select, button, textarea { padding:10px; margin:5px 0; border-radius:6px; border:none; font-size:16px; width:100%; }
+  button { background: linear-gradient(90deg,#00c6ff,#0072ff); color:white; font-weight:600; cursor:pointer; transition:0.2s; }
+  button:hover { transform: scale(1.03); box-shadow:0 0 20px #00c6ff; }
+  table { width:100%; border-collapse:collapse; margin-top:15px; }
+  th,td { border:1px solid #00c6ff; padding:8px; text-align:left; }
+  th { background:#001f4d; }
+</style>
+</head>
+<body>
+
+<nav>
+  <h2>Integrity Panel</h2>
+  <a href="#player-search">Player Search</a>
+  <a href="#moderation">Moderation Actions</a>
+  <a href="#logs">Logs</a>
+  <a href="#shifts">Shifts</a>
+  <a href="#run-command">Run Command</a>
+</nav>
+
+<main>
+  <section id="player-search">
+    <h3>Player Search</h3>
+    <input type="text" placeholder="Enter Player Name or ID" id="playerInput">
+    <button onclick="searchPlayer()">Search Player</button>
+    <div id="playerResult" style="margin-top:15px;"></div>
+  </section>
+
+  <section id="moderation">
+    <h3>Moderation Actions</h3>
+    <select id="modAction">
+      <option value="warn">Warn</option>
+      <option value="kick">Kick</option>
+      <option value="ban">Ban</option>
+    </select>
+    <input type="text" placeholder="Target Player ID" id="modPlayerId">
+    <textarea placeholder="Reason (optional)" id="modReason"></textarea>
+    <button onclick="executeModeration()">Execute Action</button>
+    <div id="modResult" style="margin-top:15px;"></div>
+  </section>
+
+  <section id="logs">
+    <h3>Logs</h3>
+    <table>
+      <thead>
+        <tr><th>Time</th><th>Staff</th><th>Action</th><th>Target</th><th>Reason</th></tr>
+      </thead>
+      <tbody id="logsTable">
+        <!-- Sample logs will appear here -->
+      </tbody>
+    </table>
+  </section>
+
+  <section id="shifts">
+    <h3>Shifts</h3>
+    <p>Placeholder for shift management (clock in/out, schedule, etc.)</p>
+  </section>
+
+  <section id="run-command">
+    <h3>Run Command</h3>
+    <input type="text" placeholder="Command to run in-game" id="commandInput">
+    <button onclick="runCommand()">Run Command</button>
+    <div id="commandResult" style="margin-top:15px;"></div>
+  </section>
+</main>
+
+<script>
+  // Placeholder JS for demo purposes
+
+  function searchPlayer(){
+    const input = document.getElementById('playerInput').value;
+    document.getElementById('playerResult').innerHTML = "Searched for player: <b>"+input+"</b> (Demo Result)";
+  }
+
+  function executeModeration(){
+    const action = document.getElementById('modAction').value;
+    const player = document.getElementById('modPlayerId').value;
+    const reason = document.getElementById('modReason').value;
+    document.getElementById('modResult').innerHTML = `Action: <b>${action}</b> executed on <b>${player}</b>. Reason: ${reason || 'N/A'} (Demo)`;
+    
+    // Add sample log
+    const logs = document.getElementById('logsTable');
+    const row = logs.insertRow(0);
+    row.innerHTML = `<td>${new Date().toLocaleString()}</td><td>StaffUser</td><td>${action}</td><td>${player}</td><td>${reason || 'N/A'}</td>`;
+  }
+
+  function runCommand(){
+    const cmd = document.getElementById('commandInput').value;
+    document.getElementById('commandResult').innerHTML = `Command "<b>${cmd}</b>" executed (Demo).`;
+  }
+</script>
+
+</body>
+</html>
