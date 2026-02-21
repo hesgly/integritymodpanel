@@ -6,143 +6,109 @@
 <title>Integrity Mod Panel</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* Reset */
-  * { margin:0; padding:0; box-sizing:border-box; }
+/* Reset + Body */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Inter',sans-serif;
+  display:flex;
+  min-height:100vh;
+  color:white;
+  background: linear-gradient(135deg,#001f4d,#000814);
+  background-size:400% 400%;
+  animation: gradientPulse 20s ease infinite;
+}
 
-  body {
-    font-family:'Inter',sans-serif;
-    display:flex;
-    min-height:100vh;
-    color:white;
-    background: linear-gradient(135deg,#001f4d,#000814);
-    background-size:400% 400%;
-    animation: gradientPulse 20s ease infinite;
-  }
+@keyframes gradientPulse {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
 
-  @keyframes gradientPulse {
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-  }
+/* Sidebar */
+nav {
+  width:250px;
+  background:#0f1a40;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+}
+nav h2 {
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:22px;
+  margin-bottom:30px;
+}
+nav a {
+  color:white;
+  text-decoration:none;
+  margin-bottom:15px;
+  padding:10px;
+  border-radius:6px;
+  transition:0.2s;
+}
+nav a:hover {
+  background: linear-gradient(90deg,#00c6ff,#0072ff);
+  color:black;
+  box-shadow:0 0 10px #00c6ff;
+}
 
-  nav {
-    width:250px;
-    background:#0f1a40;
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-    animation: fadeIn 1s ease forwards;
-  }
+/* Main content */
+main {
+  flex:1;
+  padding:40px;
+  overflow-y:auto;
+}
+h1,h2,h3,h4 { font-family:'Montserrat',sans-serif; }
+section { margin-bottom:50px; opacity:0; transform: translateY(40px); transition: all 0.8s ease; }
+section.visible { opacity:1; transform: translateY(0); }
 
-  nav h2 {
-    font-family:'Montserrat',sans-serif;
-    font-weight:900;
-    font-size:22px;
-    margin-bottom:30px;
-  }
+/* Inputs + Buttons */
+input, select, textarea {
+  padding:10px;
+  margin:5px 0;
+  border-radius:6px;
+  border:none;
+  font-size:16px;
+  width:100%;
+  background-color:#0f1a40;
+  color:white;
+}
+input::placeholder,
+textarea::placeholder { color:#a0a0a0; }
 
-  nav a {
-    color:white;
-    text-decoration:none;
-    margin-bottom:15px;
-    padding:10px;
-    border-radius:6px;
-    transition:0.2s;
-  }
+button {
+  background: linear-gradient(90deg,#00c6ff,#0072ff);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.2s;
+  padding:12px;
+  border-radius:6px;
+  margin-top:8px;
+}
+button:hover { transform: scale(1.03); box-shadow:0 0 20px #00c6ff; }
 
-  nav a:hover {
-    background: linear-gradient(90deg,#00c6ff,#0072ff);
-    color:black;
-    box-shadow:0 0 10px #00c6ff;
-  }
+/* Tables */
+table { width:100%; border-collapse:collapse; margin-top:15px; }
+th,td { border:1px solid #00c6ff; padding:8px; text-align:left; }
+th { background:#001f4d; }
 
-  main {
-    flex:1;
-    padding:40px;
-    overflow-y:auto;
-  }
+/* Shift Section */
+#shifts div { display:flex; gap:20px; flex-wrap:wrap; margin-top:10px; }
+#shifts h4 { margin-bottom:10px; }
+#shifts ul { list-style:none; padding-left:0; }
 
-  h1,h2,h3,h4 { font-family:'Montserrat',sans-serif; }
+/* Animations */
+@keyframes fadeIn { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
 
-  section {
-    margin-bottom:50px;
-    opacity:0;
-    transform: translateY(40px);
-    transition: all 0.8s ease;
-  }
-
-  section.visible {
-    opacity:1;
-    transform: translateY(0);
-  }
-
-  /* Inputs, selects, textareas dark theme */
-  input, select, textarea {
-    padding:10px;
-    margin:5px 0;
-    border-radius:6px;
-    border:none;
-    font-size:16px;
-    width:100%;
-    background-color:#0f1a40;
-    color:white;
-  }
-
-  input::placeholder,
-  textarea::placeholder {
-    color:#a0a0a0;
-  }
-
-  /* Buttons */
-  button {
-    background: linear-gradient(90deg,#00c6ff,#0072ff);
-    color:white;
-    font-weight:600;
-    cursor:pointer;
-    transition:0.2s;
-    padding:12px;
-    border-radius:6px;
-    margin-top:8px;
-  }
-
-  button:hover {
-    transform: scale(1.03);
-    box-shadow:0 0 20px #00c6ff;
-  }
-
-  /* Tables */
-  table {
-    width:100%;
-    border-collapse:collapse;
-    margin-top:15px;
-  }
-
-  th,td {
-    border:1px solid #00c6ff;
-    padding:8px;
-    text-align:left;
-  }
-
-  th {
-    background:#001f4d;
-  }
-
-  @keyframes fadeIn { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
-
-  /* Responsive */
-  @media (max-width:768px){
-    nav { width:200px; }
-    main { padding:20px; }
-  }
-
-  /* Shift Section Styles */
-  #shifts div { display:flex; gap:20px; flex-wrap:wrap; margin-top:10px; }
-  #shifts h4 { margin-bottom:10px; }
-  #shifts ul { list-style:none; padding-left:0; }
+/* Responsive */
+@media (max-width:768px){
+  nav { width:200px; }
+  main { padding:20px; }
+}
 </style>
 </head>
 <body>
-
 <nav>
   <h2>Integrity Panel</h2>
   <a href="#player-search">Player Search</a>
@@ -157,7 +123,7 @@
     <h3>Player Search</h3>
     <input type="text" placeholder="Enter Player Name or ID" id="playerInput">
     <button onclick="searchPlayer()">Search Player</button>
-    <div id="playerResult" style="margin-top:15px;"></div>
+    <pre id="playerResult" style="margin-top:15px;"></pre>
   </section>
 
   <section id="moderation">
@@ -186,14 +152,12 @@
   <section id="shifts">
     <h3>Shift Management</h3>
     <div>
-      <button id="clockInBtn" onclick="clockIn()">Clock In</button>
-      <button id="clockOutBtn" onclick="clockOut()">Clock Out</button>
-      
+      <button onclick="clockIn()">Clock In</button>
+      <button onclick="clockOut()">Clock Out</button>
       <div style="flex:1; min-width:250px;">
         <h4>Current Shift</h4>
         <p id="currentShift">Not clocked in</p>
       </div>
-      
       <div style="flex:1; min-width:250px;">
         <h4>Past Shifts</h4>
         <ul id="shiftHistory"></ul>
@@ -205,74 +169,94 @@
     <h3>Run Command</h3>
     <input type="text" placeholder="Command to run in-game" id="commandInput">
     <button onclick="runCommand()">Run Command</button>
-    <div id="commandResult" style="margin-top:15px;"></div>
+    <pre id="commandResult" style="margin-top:15px;"></pre>
   </section>
 </main>
 
 <script>
-  // Fade-in sections on scroll
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) entry.target.classList.add('visible');
+// Fade-in animation on scroll
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.2 });
+sections.forEach(section => observer.observe(section));
+
+// Replace this with your actual Worker URL
+const WORKER_URL = 'https://integrity-api.hesglyhehe.workers.dev';
+
+// --- Player Search ---
+async function searchPlayer() {
+  const playerId = document.getElementById('playerInput').value;
+  if(!playerId) return alert("Enter a player ID or name!");
+  try {
+    const resp = await fetch(`${WORKER_URL}/api/search-player`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({playerId})
     });
-  }, {threshold:0.2});
-  sections.forEach(section => observer.observe(section));
-
-  // Placeholder JS for demo
-  function searchPlayer(){
-    const input = document.getElementById('playerInput').value;
-    document.getElementById('playerResult').innerHTML = "Searched player: <b>"+input+"</b> (Demo)";
+    const data = await resp.json();
+    document.getElementById('playerResult').innerText = JSON.stringify(data, null, 2);
+  } catch(e) {
+    document.getElementById('playerResult').innerText = 'Error fetching player info.';
+    console.error(e);
   }
+}
 
-  function executeModeration(){
-    const action = document.getElementById('modAction').value;
-    const player = document.getElementById('modPlayerId').value;
-    const reason = document.getElementById('modReason').value;
-    document.getElementById('modResult').innerHTML = `Action: <b>${action}</b> executed on <b>${player}</b>. Reason: ${reason || 'N/A'} (Demo)`;
+// --- Moderation Actions ---
+function executeModeration() {
+  const action = document.getElementById('modAction').value;
+  const player = document.getElementById('modPlayerId').value;
+  const reason = document.getElementById('modReason').value || 'N/A';
+  if(!player) return alert("Enter a target player ID!");
 
-    const logs = document.getElementById('logsTable');
-    const row = logs.insertRow(0);
-    row.innerHTML = `<td>${new Date().toLocaleString()}</td><td>StaffUser</td><td>${action}</td><td>${player}</td><td>${reason || 'N/A'}</td>`;
+  // Log locally (can be hooked to Worker later)
+  const logs = document.getElementById('logsTable');
+  const row = logs.insertRow(0);
+  row.innerHTML = `<td>${new Date().toLocaleString()}</td><td>StaffUser</td><td>${action}</td><td>${player}</td><td>${reason}</td>`;
+  document.getElementById('modResult').innerText = `Action executed: ${action} on ${player} (Demo)`;
+}
+
+// --- Run Command ---
+async function runCommand() {
+  const cmd = document.getElementById('commandInput').value;
+  if(!cmd) return alert("Enter a command!");
+  try {
+    const resp = await fetch(`${WORKER_URL}/api/run-command`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({command:cmd})
+    });
+    const data = await resp.json();
+    document.getElementById('commandResult').innerText = `Command executed:\n${JSON.stringify(data, null, 2)}`;
+  } catch(e) {
+    document.getElementById('commandResult').innerText = 'Error executing command.';
+    console.error(e);
   }
+}
 
-  function runCommand(){
-    const cmd = document.getElementById('commandInput').value;
-    document.getElementById('commandResult').innerHTML = `Command "<b>${cmd}</b>" executed (Demo)`;
-  }
+// --- Shift Management ---
+let shiftStart = null;
+const shiftHistory = [];
 
-  // Shift management
-  let shiftStart = null;
-  const shiftHistory = [];
+function clockIn() {
+  if(shiftStart) return alert("Already clocked in!");
+  shiftStart = new Date();
+  document.getElementById('currentShift').innerText = `Clocked in at: ${shiftStart.toLocaleTimeString()}`;
+}
 
-  function clockIn(){
-    if(shiftStart){
-      alert("Already clocked in!");
-      return;
-    }
-    shiftStart = new Date();
-    document.getElementById('currentShift').innerText = `Clocked in at: ${shiftStart.toLocaleTimeString()}`;
-  }
-
-  function clockOut(){
-    if(!shiftStart){
-      alert("You must clock in first!");
-      return;
-    }
-    const shiftEnd = new Date();
-    const duration = ((shiftEnd - shiftStart)/1000/60).toFixed(1); // minutes
-    const entry = `Shift: ${shiftStart.toLocaleTimeString()} - ${shiftEnd.toLocaleTimeString()} (${duration} mins)`;
-    
-    shiftHistory.push(entry);
-    const ul = document.getElementById('shiftHistory');
-    const li = document.createElement('li');
-    li.innerText = entry;
-    ul.prepend(li); // newest first
-    
-    document.getElementById('currentShift').innerText = "Not clocked in";
-    shiftStart = null;
-  }
+function clockOut() {
+  if(!shiftStart) return alert("You must clock in first!");
+  const shiftEnd = new Date();
+  const duration = ((shiftEnd - shiftStart)/1000/60).toFixed(1);
+  const entry = `Shift: ${shiftStart.toLocaleTimeString()} - ${shiftEnd.toLocaleTimeString()} (${duration} mins)`;
+  shiftHistory.push(entry);
+  const ul = document.getElementById('shiftHistory');
+  const li = document.createElement('li');
+  li.innerText = entry;
+  ul.prepend(li);
+  document.getElementById('currentShift').innerText = "Not clocked in";
+  shiftStart = null;
+}
 </script>
-
 </body>
 </html>
