@@ -8,12 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
       background: radial-gradient(circle at top left, #001f4d, #000814 60%);
@@ -21,174 +16,104 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-
     header {
-      position: fixed;
-      width: 100%;
-      padding: 20px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(12px);
-      z-index: 1000;
+      position: fixed; width: 100%; padding: 20px 60px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); z-index: 1000;
     }
-
     header h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 24px;
+      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 28px;
       background: linear-gradient(90deg, #00c6ff, #0072ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-
     nav a {
-      margin-left: 30px;
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
+      margin-left: 30px; text-decoration: none; color: white; font-weight: 500;
       transition: 0.3s ease;
     }
-
-    nav a:hover {
-      color: #00c6ff;
-    }
-
+    nav a:hover { color: #00c6ff; }
     .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
-      animation: fadeIn 1.2s ease forwards;
+      height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      padding: 0 20px; animation: fadeIn 1.2s ease forwards;
     }
-
     .hero h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 64px;
-      font-weight: 900;
-      margin-bottom: 20px;
+      font-family: 'Montserrat', sans-serif; font-size: 64px; font-weight: 900;
+      margin-bottom: 10px;
       background: linear-gradient(90deg, #00c6ff, #0072ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-
-    .hero p {
-      font-size: 20px;
-      max-width: 650px;
-      margin-bottom: 40px;
-      opacity: 0.85;
+    .badge {
+      margin-top: 12px;
+      animation: pop 0.8s ease-out;
     }
-
+    @keyframes pop { 0% { transform: scale(0.7); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
     .btn {
       background: linear-gradient(90deg, #00c6ff, #0072ff);
-      padding: 16px 50px;
-      border-radius: 10px;
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      font-size: 18px;
-      transition: 0.3s ease;
+      padding: 16px 50px; border-radius: 10px; text-decoration: none;
+      color: white; font-weight: 600; font-size: 18px;
+      transition: 0.3s ease; margin-top: 20px;
       box-shadow: 0 0 25px rgba(0,114,255,0.4);
     }
-
     .btn:hover {
-      transform: translateY(-5px) scale(1.05);
+      transform: translateY(-4px) scale(1.05);
       box-shadow: 0 0 45px rgba(0,114,255,0.7);
     }
-
-    .section {
-      padding: 120px 20px;
-      max-width: 1000px;
-      margin: auto;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
-
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .section h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .section p {
-      font-size: 18px;
-      opacity: 0.8;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      opacity: 0.5;
-      font-size: 14px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 768px) {
-      .hero h2 {
-        font-size: 40px;
-      }
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .section { padding: 120px 20px; max-width: 1000px; margin: auto; text-align: center; opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+    .section.visible { opacity: 1; transform: translateY(0); }
+    .section h3 { font-family: 'Montserrat', sans-serif; font-size: 36px; margin-bottom: 20px; }
+    footer { text-align: center; padding: 40px 20px; opacity: 0.6; font-size: 14px; }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Integrity</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#why">Why Us</a>
-    </nav>
-  </header>
+<header>
+  <h1>Integrity • NYCRP</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#why">Why Us</a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <h2>Integrity</h2>
-    <p>The next-level ERLC experience for serious roleplay. Structure. Systems. Community.</p>
-    <a href="https://discord.gg/nycrrp" target="_blank" class="btn">
-      Join NYCRP
+<section class="hero">
+  <h2>Integrity</h2>
+  <p>Serious ERLC roleplay. Structure. Systems. Community.</p>
+  
+  <!-- Live member count badge -->
+  <div class="badge">
+    <a href="https://discord.gg/nycrrp" target="_blank">
+      <img src="https://discord-live-members-count-badge.vercel.app/api/discord-members?guildId=1324761893805490176&color=00c6ff&label=Members&scale=1.2" alt="NYCRP Members">
     </a>
-  </section>
+  </div>
 
-  <section class="section" id="about">
-    <h3>About NYCRP</h3>
-    <p>NYCRP is a professionally managed ERLC private server focused on realism, leadership, and community growth.</p>
-  </section>
+  <a href="https://discord.gg/nycrrp" target="_blank" class="btn">Join NYCRP</a>
+</section>
 
-  <section class="section" id="why">
-    <h3>Why Integrity?</h3>
-    <p>We’re building structured systems, clean management, and a serious RP environment. No chaos. No nonsense. Just quality.</p>
-  </section>
+<section class="section" id="about">
+  <h3>About NYCRP</h3>
+  <p>NYCRP is a professionally managed ERLC private server focused on realism, leadership, and community growth.</p>
+</section>
 
-  <footer>
-    © 2026 Integrity | NYCRP
-  </footer>
+<section class="section" id="why">
+  <h3>Why Integrity?</h3>
+  <p>We build structured systems, clean management, and a high-quality RP environment.</p>
+</section>
 
-  <script>
-    const sections = document.querySelectorAll('.section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
+<footer>
+  © 2026 Integrity | NYCRP
+</footer>
 
-    sections.forEach(section => observer.observe(section));
-  </script>
+<script>
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+  sections.forEach(section => observer.observe(section));
+</script>
 
 </body>
 </html>
